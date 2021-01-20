@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: PUSH EBP
+name: kernelm0de
 
 # Short bio or description (displayed in the header)
-description: kernelm0de
+description: 
 
 #
 # Flags below are optional
@@ -26,8 +26,6 @@ navigation:
     url: /about
   - name: Archive
     url: /archive
-  - name: Tags
-    url: /tags
 
 # Pagination
 paginate: 5
@@ -51,7 +49,7 @@ footer-links:
   youtube: # channel/<your_long_string> or user/<user-name>
 
 # Text under the icons in footer
-footer-text: © 2019 kernelm0de
+footer-text: © 2021 kernelm0de
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
