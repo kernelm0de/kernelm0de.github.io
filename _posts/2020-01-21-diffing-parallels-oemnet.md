@@ -6,14 +6,14 @@ Recently I decided to take a look at Parallels Desktop and started with diffing 
 
 ## OEMNet Out-Of-Bound Read
 
-Diffing between version 15.x and 16.x is of not much help at first since bindiff reports a lot of changes which makes everything harder for us. But with some careful review I noticed an interesting change in the function named OEMNetOutPortStat. Looking at the diff its pretty much clear that an Out-Of-Bound Read is being patched here. 
+Diffing between version 15.x and 16.x is of not much help at first since bindiff reports a lot of changes which makes everything harder for us. But with some careful review I noticed an interesting change in the function named OEMNetOutPortStat. Looking at the diff its clear that an Out-Of-Bound Read is being patched here. 
 
 <p align="center">
   <img src="../images/oem_bindiff.png"/>
 <br>
 </p>
 
-From the name of function its pretty much clear that this function comes into play when writing to an specific OEMNet I/O port. I couldn't find any public information about OEMNet but from the code it looked like a network device. After digging for some more time and understanding a few other things related to this device I decided it was time to gather some more information about this patch. Seeing the patch, its pretty much clear that "data" variable is guest-controllable which indeed it is. 
+From the name of function its pretty much clear that this function comes into play when writing to an specific OEMNet I/O port. I couldn't find any public information about OEMNet but from the code it looked like a network device. After digging for some more time and understanding a few other things related to this device I decided it was time to gather some more information about this patch. Seeing the patch, it looks like that "data" variable is guest-controllable which indeed it is. 
 <br>
 
 ```c
