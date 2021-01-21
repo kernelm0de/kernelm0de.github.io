@@ -16,7 +16,7 @@ Diffing between version 15.x and 16.x is of not much help at first since bindiff
 From the name of function its pretty much clear that this function comes into play when writing to an specific OEMNet I/O port. I couldn't find any public information about OEMNet but from the code it looked like a network device. After digging for some more time and understanding a few other things related to this device I decided it was time to gather some more information about this patch. Seeing the patch, its pretty much clear that "data" variable is guest-controllable which indeed it is. 
 <br>
 
-```C
+```c
 __int64 __fastcall OEMNetOutPortStat(unsigned __int16 a1, unsigned int a2, unsigned __int64 a3, void *data, net_device *a5)
 {
   a5->stat_store = *(_QWORD *)(a5->stat_info + 8LL * *(unsigned int *)data + 0xB4);
