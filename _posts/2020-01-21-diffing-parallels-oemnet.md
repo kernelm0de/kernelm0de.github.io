@@ -13,7 +13,7 @@ Diffing between version 15.x and 16.x is of not much help at first since bindiff
 <br>
 </p>
 
-From the name of function its pretty much clear that this function comes into play when writing to an specific OEMNet I/O port. I couldn't find any public information about OEMNet but from the code it looked like a network device. After digging for some more time and understanding a few other things related to this device I decided it was time to gather some more information about this patch. Seeing the patch, it looks like that "data" variable is guest-controllable which indeed it is. 
+From the name of function its pretty much clear that this function comes into play when writing to a specific OEMNet I/O port. I couldn't find any public information about OEMNet but from the code it looked like a network device. After digging for some more time and understanding a few other things related to this device I decided it was time to gather some more information about this patch. Seeing the patch, it looks like that "data" variable is guest-controllable which indeed it is. 
 <br>
 
 ```c
