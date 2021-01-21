@@ -24,7 +24,7 @@ __int64 __fastcall OEMNetOutPortStat(unsigned __int16 a1, unsigned int a2, unsig
 }
 ```
 
-```C
+```
 __int64 __fastcall OEMNetInPortStat(unsigned __int16 a1, unsigned int a2, unsigned __int64 a3, void *data, net_device *a5)
 {
   *(_DWORD *)data = a5->stat_store;
@@ -46,7 +46,7 @@ At this point I had a good understanding of the vulnerability but still some wor
 
 I chose to start from the function e1000_setup_oem_callbacks just because e1000 is pretty common device and I had some understanding of it (which didn't come of any use here though). So looking at e1000_setup_oem_callbacks it just sets up some NULL I/O handlers and some function callbacks and then calling OEMNetAssignPorts, going one more step up we see that e1000_setup_oem_callbacks is actually being called from e1000_out_port_addr which itself is an I/O port handler. So it looks like we can enable OEMNet I/O ports from e1000_out_port_addr handler, the string "e1000_reassign_to_oem" in this function gives us a fair hint. After some reverse engineering I finally figured how to activate the OEMNet device from the guest. 
 
-```C
+```
 __int64 __fastcall e1000_out_port_addr(char a1, int a2, int a3, void *a4, void *a5, int a6)
 {
 .........
@@ -80,7 +80,7 @@ And now we have all the required information to write a POC and leak some memory
 
 ### POC:
 
-```C
+```
 for( index = 0; index < qwords_to_leak; index++ ) {
     outl(index, OEMNET_IO_STAT_PORT);
     low = inl(OEMNET_IO_STAT_PORT);
