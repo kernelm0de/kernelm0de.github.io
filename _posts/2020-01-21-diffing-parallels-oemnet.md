@@ -69,7 +69,7 @@ __int64 __fastcall e1000_out_port_addr(char a1, int a2, int a3, void *a4, void *
 }
 ```
 
-Looking at this I/O handler we know "data" is guest-controllable, and we see that it compares value written to I/O port with what looks like a magic value (0x1AB8400E) and if this passes it goes ahead and resets the e1000 device and enables the OEMNet device. Without reversing any further I tried this and it seemed to work fine, just by writing 0x1AB8400E to the lowest e1000 I/O port the OEMNet device got activated. Once the OEM ports are assigned we can test the OEMNetOutPortStat handler and confirm that "data" is guest-controllable.
+Looking at this I/O handler we know data is guest-controllable, and we see that it compares value written to I/O port with what looks like a magic value (0x1AB8400E) and if this passes it goes ahead and resets the e1000 device and enables the OEMNet device. Without reversing any further I tried this and it seemed to work fine, just by writing 0x1AB8400E to the lowest e1000 I/O port the OEMNet device got activated. Once the OEM ports are assigned we can test the OEMNetOutPortStat handler and confirm that "data" is guest-controllable.
 
 <p align="center">
   <img src="../images/show_eax.png"/>
