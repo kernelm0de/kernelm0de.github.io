@@ -89,7 +89,7 @@ for( index = 0; index < qwords_to_leak; index++ ) {
 }
 ```
 
-The POC is pretty simple, we write an index to I/O port which then stores 8 bytes into stat_store from that index, after that we read from I/O port twice as it returns 4 bytes at a time which can be seen in the function OEMNetInPortStat. Finally as we run the poc we can see a lot of interessting host kernel leaks.
+The POC is pretty simple, we write an index to I/O port which then stores 8 bytes into stat_store from that index, after that we read from I/O port twice as it returns 4 bytes at a time which can be seen in the function OEMNetInPortStat. Finally as we run the poc we can see a lot of interesting host kernel leaks.
 
 <p align="center">
   <img src="../images/poc_result.png"/>
